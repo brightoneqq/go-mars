@@ -1,4 +1,4 @@
-module go-mars
+module github.com/brightoneqq/go-mars
 
 go 1.15
 
