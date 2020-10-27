@@ -1,8 +1,8 @@
-package log
+package logger
 
 import "log"
 
-func Fatal(err interface{}) {
+func Handle(err interface{}) {
 	if err != nil {
 		log.Fatal(err)
 	}
