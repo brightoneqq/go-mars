@@ -32,3 +32,14 @@ func HandleError(err error, action func()) {
 		}
 	}
 }
+func HandleErrorF(err error, format string, v ...interface{}) {
+	if err != nil {
+		Errorf(format, v...)
+	}
+}
+
+func HandleFatalF(err error, format string, v ...interface{}) {
+	if err != nil {
+		Fatalf(format, v...)
+	}
+}

@@ -22,42 +22,55 @@ const (
 	FATAL
 )
 
-// Setup initialize the log instance
 func init() {
 	logger = log.New(os.Stdout, "[INFO]", log.LstdFlags)
 }
 
-// Debug output logs at debug level
+func Debugf(format string, v ...interface{}) {
+	setPrefix(DEBUG)
+	logger.Printf(format, v...)
+}
 func Debug(v ...interface{}) {
 	setPrefix(DEBUG)
 	logger.Println(v)
 }
 
-// Info output logs at info level
+func Infof(format string, v ...interface{}) {
+	setPrefix(INFO)
+	logger.Printf(format, v...)
+}
 func Info(v ...interface{}) {
 	setPrefix(INFO)
 	logger.Println(v...)
 }
 
-// Warn output logs at warn level
+func Warnf(format string, v ...interface{}) {
+	setPrefix(WARNING)
+	logger.Printf(format, v...)
+}
 func Warn(v ...interface{}) {
 	setPrefix(WARNING)
 	logger.Println(v...)
 }
 
-// Error output logs at error level
+func Errorf(format string, v ...interface{}) {
+	setPrefix(ERROR)
+	logger.Printf(format, v...)
+}
 func Error(v ...interface{}) {
 	setPrefix(ERROR)
 	logger.Println(v...)
 }
 
-// Fatal output logs at fatal level
+func Fatalf(format string, v ...interface{}) {
+	setPrefix(FATAL)
+	logger.Fatalf(format, v...)
+}
 func Fatal(v ...interface{}) {
 	setPrefix(FATAL)
 	logger.Fatalln(v...)
 }
 
-// setPrefix set the prefix of the log output
 func setPrefix(level Level) {
 	logPrefix = fmt.Sprintf("[%s] ", levelFlags[level])
 	logger.SetPrefix(logPrefix)
